@@ -1,0 +1,187 @@
+{% extends 'layout.jinja2' %}
+
+{% block body %}
+
+<div class="border"></div>
+
+<div class="grid-x" style="min-width: 1500px; max-width: 1500px;">
+    <div class="cell large-8 large-offset-2">
+        <div class="grid-x">
+            <div class="cell large-3">
+                <div class="player-box" style="">
+                    <ul class="tabs" data-tabs id="option-tabs">
+                        <li class="tabs-title is-active">
+                            <a data-tabs-target="stats" href="#stats">
+                                Stats
+                            </a>
+                        </li>
+                        <li class="tabs-title">
+                            <a href="#inventory" aria-selected="true">
+                                Inventory
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tabs-content" data-tabs-content="option-tabs">
+                        <div class="tabs-panel" id="inventory" style="height: 452px;">
+                            <div id="slot1">-</div>
+                            <div id="slot2">-</div>
+                            <div id="slot3">-</div>
+                            <div id="slot4">-</div>
+                            <div id="slot5">-</div>
+                            <div id="slot6">-</div>
+                            <div id="slot7">-</div>
+                            <div id="slot8">-</div>
+                            <div id="slot9">-</div>
+                            <div id="slot10">-</div>
+                            <div id="slot11">-</div>
+                            <div id="slot12">-</div>
+                            <div id="slot13">-</div>
+                            <div id="slot14">-</div>
+                            <div id="slot15">-</div>
+                            <div id="slot16">-</div>
+                            <div id="slot17">-</div>
+                            <div id="slot18">-</div>
+                            <div id="slot19">-</div>
+                            <div id="slot20">-</div>
+                        </div>
+                        <div class="tabs-panel is-active" id="stats">
+                            <div>Day: <span id="day">1</span></div>
+                            <div>Time: <span id="time">0</span></div>
+                            <hr />
+                            <div>Money: $<span id="money">0</span></div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                            <hr />
+                            <div>
+                                Affection: <span id="affection">0</span> / 100
+                            </div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                            <div>-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell large-9">
+                <div id="game-box" class="game-box" style="height: 516px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-x" style="min-width: 1500px; max-width: 1500px;">
+    <div class="cell large-8 large-offset-2">
+        <div class="grid-x">
+            <div class="cell">
+                <div class="option-box">
+                    <ul class="tabs" data-tabs id="option-tabs">
+                        <li class="tabs-title">
+                            <a data-tabs-target="info" href="#info">
+                                Information
+                            </a>
+                        </li>
+                        <li class="tabs-title">
+                            <a data-tabs-target="gallery" href="#gallery">
+                                Gallery
+                            </a>
+                        </li>
+                        <li class="tabs-title">
+                            <a href="#shop">Shop</a>
+                        </li>
+                        <li class="tabs-title">
+                            <a data-tabs-target="sister" href="#sister">
+                                Sister
+                            </a>
+                        </li>
+                        <li class="tabs-title is-active">
+                            <a data-tabs-target="work" href="#work" aria-selected="true">
+                                Work
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tabs-content" data-tabs-content="option-tabs">
+                        <div class="tabs-panel" id="shop" style="min-height: 127px;">
+                            <button onclick="buyUpgrade()">upgrade</button>
+                        </div>
+                        <div class="tabs-panel" id="sister" style="min-height: 127px;">
+                            <button onclick="rape()">?</button>
+                            <button onclick="giftOptions()">Gift</button>
+                            <button onclick="chat()">Chat</button>
+                        </div>
+                        <div class="tabs-panel" id="info" style="min-height: 127px;">
+                            <p>Try to unlock all five images in the gallery.</p>
+                        </div>
+                        <div class="tabs-panel" id="gallery" style="min-height: 127px;">
+                            <div style="opacity: 0.4; color #333;">
+                                <button id="image1">?</button>
+                                <button id="image2">?</button>
+                                <button id="image3">?</button>
+                                <button id="image4">?</button>
+                                <button id="image5">?</button>
+                            </div>
+                        </div>
+                        <div class="tabs-panel is-active" id="work" style="min-height: 127px;">
+                            <button id="work-button" onclick="work()">
+                                work
+                            </button>
+                            <span id="auto-cell"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#
+<div class="border">
+    <div class="title">Corruption</div>
+</div>
+
+<div class="box">
+    <div id="options">
+        <button tabindex="-1" id="work" onclick="work()">Work</button>
+        <button onclick="toggleSister()">Sister</button>
+        <button onclick="toggleShop()">Shop</button>
+    </div>
+    <div class="text">
+        Day: <span id="day">1</span><br />
+        Time: <span id="time">10</span><br /><br />
+        <!--Affection: <span id="affection">0</span> / 100<br />-->
+        Money: $<span id="money">0</span><br />
+        Gift Price: $<span id="gift_price">0</span><br />
+        Gift Chance: <span id="gift_chance">0</span><br /><br />
+        Gifts: <br />
+            ---- 25: <span id="gift_25">0</span><br />
+            ---- 50: <span id="gift_50">0</span><br />
+            --- 100: <span id="gift_100">0</span><br />
+            --- 250: <span id="gift_250">0</span><br />
+            --- 500: <span id="gift_500">0</span><br />
+            -- 1000: <span id="gift_1000">0</span><br />
+            -- 2500: <span id="gift_2500">0</span><br /><br />
+        Images: <span id="images">0</span> / 5<br />
+        Upgrade Price: $<span id="upgrade_price">500</span><br />
+        Income (Manual): $<span id="income_manual">1</span><br />
+        Income (Auto): $<span id="income_auto">?</span> - per 1200ms
+    </br?>
+    </div>
+    <div id="shop" style="visibility: hidden;">
+        <button onclick="buyUpgrade()">upgrade</button>
+        <button onclick="buyGift()">buy gift</button>
+        <button onclick="toggleShop()">cancel</button>
+    </div>
+    <div id="sister" style="visibility: hidden;">
+        <button onclick="rape()">Rape</button>
+        <button onclick="giveGift()">Gift</button>
+        <button onclick="chat()">Chat</button>
+    </div>
+    <img class="img" id="img"/>
+</div>
+#}
+{% endblock body %}
